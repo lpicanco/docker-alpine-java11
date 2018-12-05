@@ -6,7 +6,7 @@
 ![MicroBadger Layers](https://img.shields.io/microbadger/layers/lpicanco/java11-alpine.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/lpicanco/java11-alpine.svg)
 
-OpenJDK 11 on Alpine
+OpenJDK 11 on Alpine with glibc
 
 ## How to use this image
 
