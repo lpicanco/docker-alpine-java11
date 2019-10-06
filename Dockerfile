@@ -1,9 +1,10 @@
 FROM centos:7 as jlink-builder
 
 WORKDIR /opt
-RUN curl https://download.java.net/java/ga/jdk11/openjdk-11_linux-x64_bin.tar.gz -o jdk.tar.gz && \
+RUN yum install -y wget && \
+    wget -O jdk.tar.gz https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.4+11/OpenJDK11U-jdk_x64_linux_hotspot_11.0.4_11.tar.gz && \
     tar zxf jdk.tar.gz && \
-    ln -s jdk-11 java && \
+    ln -s jdk-11.0.4+11 java && \
     rm -f jdk.tar.gz.tar.gz
 
 RUN /opt/java/bin/jlink \
@@ -14,7 +15,7 @@ RUN /opt/java/bin/jlink \
      --no-man-pages \
      --strip-debug \
      --output /opt/jdk-11-mini-runtime
-
+ 
 FROM alpine:3.8
 LABEL maintainer="lpicanco@gmail.com"
 
